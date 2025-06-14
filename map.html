@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webmap Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+    <header class="absolute w-full top-0 z-50 shadow">
+        <div class="flex items-center p-4 absolute text-white bg-black/70 w-full">
+            <a href="/">
+                <img src="/images/logo.png" alt="Logo" class="h-10 w-auto mr-3">
+            </a>
+            <div>
+                Universitas Gadjah Mada
+            </div>
+        </div>
+    </header>
+
+    <div class="w-screen h-screen">
+        <iframe src="https://radiata.app.carto.com/map/165aa6e0-4052-4ce6-95de-b95dd50c7f53"
+            class="w-full h-full border-0" allowfullscreen></iframe>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webmap Kejahatan Jalanan Provinsi DIY</title>
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white w-screen overlay-x-hidden">
+
+    <header class="absolute w-full top-0 z-50 shadow">
+        <div class="flex items-center p-4 absolute text-white bg-black/70 w-full">
+            <!-- Logo -->
+            <a href="/">
+                <img src="/images/logo.png" alt="Logo" class="h-10 w-auto mr-3">
+            </a>
+            <!-- Title -->
+            <div>
+                Universitas Gadjah Mada
+            </div>
+        </div>
+    </header>
+    <!-- Landing Section -->
+    <section class="relative h-screen w-screen">
+        <img src="/images/landing.png" class="absolute top-0 left-0 w-screen h-screen object-fill z-0"
+            alt="Landing Background">
+        <div class="relative z-10 flex flex-col items-center justify-center gap-6 h-full w-full">
+            <div class="text-center text-4xl font-bold">
+                Webmap Kejahatan Jalanan Provinsi DIY
+            </div>
+            <div class="text-center min-w-1/2 max-w-2/3">
+                Hasil penelitian mengenai kejahatan jalanan yang terdiri atas pola spasial dan hubungannya dengan data
+                sosiodemografi, serta APJ dan CCTV di Provinsi Daerah Istimewa Yogyakarta.
+            </div>
+            <div class="bg-white rounded-md hover:bg-gray-200 px-6 py-2 text-sm font-medium rounded-4xl text-black cursor-pointer"
+                onclick="scrollToSection('webmap')">
+                Mulai
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Webmap Section -->
+    <section id="webmap" class="relative flex flex-col gap-8 p-8 px-16 text-sm">
+        <div class="text-xl font-bold text-center">
+            Informasi Webmap
+        </div>
+        <div>
+            Analisis data kejahatan dan kriminalitas bermanfaat untuk berbagai tujuan, mulai dari mendukung tugas
+            lembaga keamanan hingga sebagai sarana edukasi masyarakat. Analisis kriminalitas yang selama ini dilakukan
+            oleh POLRI masih bersifat statistik dan belum mempertimbangkan aspek spasial. Maka dari itu, hasil analisis
+            pola, korelasi, dan regresi spasial akan memberikan informasi yang spesifik pada suatu lokasi kejadian
+            kejahatan jalanan.
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm font-normal">
+            <div class="list-data">1. Data kejahatan jalanan (Laporan Polisi)</div>
+            <div class="list-data">2. Data sosiodemografi berbasis kecamatan</div>
+            <div class="list-data">3. Data Alat Penerangan Jalan (APJ)</div>
+            <div class="list-data">4. Data CCTV</div>
+            <div class="list-data">5. Data batas administrasi (kalurahan & kapanewon)</div>
+            <div class="list-data">6. Data grid hexagon berukuran 750m</div>
+        </div>
+
+        <div>
+            Data laporan kejahatan jalanan merupakan data utama yang diperoleh dari masing-masing Polres/ta di
+            kabupaten/kota Provinsi DIY. Batas administrasi digunakan dalam analisis sosiodemografi dan dasar untuk
+            menghasilkan grid. Adapun data KJ, APJ, dan CCTV diagregasikan berdasarkan grid hexagon berukuran 750 meter
+            untuk keperluan analisis autokorelasi dan regresi spasial.
+        </div>
+    </section>
+
+    <!-- Hasil Analisis Section -->
+    <section class="flex flex-col gap-8 p-8 px-16">
+        <div class="text-xl font-bold text-center">
+            Hasil Analisis
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm text-white">
+            <div class="border border-gray-700 bg-gray-900 rounded-md p-4 flex flex-col gap-4">
+                <div class="text-xl font-semibold">1. Aggregate Time Series</div>
+                <p>
+                    Menyajikan informasi terkait kejadian kejahatan jalanan berdasarkan kelompok waktu selama 24 jam
+                    dengan interval waktu setiap satu (1) jam. Pada peta diperlihatkan animasi heatmap yang menunjukkan
+                    kelompok kejadian pada interval waktu yang sama. Pengguna dapat memilih interval waktu yang
+                    diinginkan untuk eksplorasi data.
+                </p>
+            </div>
+            <div class="border border-gray-700 bg-gray-900 rounded-md p-4 flex flex-col gap-4">
+                <div class="text-xl font-semibold">2. Clustering Time Series</div>
+                <p>
+                    Menyajikan informasi terkait pola kejadian kejahatan jalanan berdasarkan interval waktu kejadian dan
+                    lokasi (kapanewon) di mana tindak kejahatan terjadi. Pada peta diperlihatkan tampilan geovisual
+                    kapanewon yang dikategorikan klaster dengan kerapatan waktu kejadian yang tinggi sampai dengan
+                    kategori random dengan kerapatan waktu kejadian yang acak. Pengguna dapat memunculkan informasi
+                    dengan mengklik pada wilayah kejadian dan dapat melakukan filter sesuai dengan kategori persentase
+                    klaster kejadian.
+                </p>
+            </div>
+            <div class="border border-gray-700 bg-gray-900 rounded-md p-4 flex flex-col gap-4">
+                <div class="text-xl font-semibold">3. Network OD Movement</div>
+                <p>
+                    Menyajikan informasi berupa pergerakan kejahatan jalanan berdasarkan rentetan waktu kejadian dalam
+                    interval waktu selama satu (1) bulan. Pada peta diperlihatkan bagaimana peristiwa kejahatan jalanan
+                    bergerak dari asal (origin) ke destinasi antarwilayah kapanewon. Pengguna dapat memunculkan
+                    informasi dengan memilih layer selector dan mengaktifkan pop up info atribut setiap movement. Selain
+                    itu, pengguna juga dapat melakukan filter terhadap pemilihan origin dan destination, serta arah
+                    (west, north, south, east dll) ke mana pergerakan terjadi.
+                </p>
+            </div>
+            <div class="border border-gray-700 bg-gray-900 rounded-md p-4 flex flex-col gap-4">
+                <div class="text-xl font-semibold">4. Korelasi & Regresi Sosiodemografi</div>
+                <p>
+                    Menyajikan informasi terkait hubungan variabel-variabel sosiodemografi dengan jumlah kejadian
+                    kejahatan jalanan pada suatu wilayah kapanewon/kemantren. Hasil korelasi menjadi dasar pemilihan
+                    variabel untuk analisis regresi dalam prediksi tingkat kerawanan. Dari 10 variabel, terdapat enam
+                    (6) variabel yang signifikan berdasarkan uji statistik t. Keenam variabel itu adalah persentase
+                    remaja laki-laki, persentase penduduk dengan tingkat pendidikan dasar, persentase penduduk dengan
+                    tingkat pendidikan tinggi, jarak kapanewon/kemantren dengan pusat kabupaten/kota, jarak
+                    kapanewon/kemantren dengan pusat provinsi, dan luas wilayah.
+                </p>
+            </div>
+            <div class="border border-gray-700 bg-gray-900 rounded-md p-4 flex flex-col gap-4">
+                <div class="text-xl font-semibold">5. Autokorelasi & Regresi Spasial</div>
+                <p>
+                    Menyajikan informasi terkait hubungan variabel-variabel sosiodemografi dengan jumlah kejadian
+                    kejahatan jalanan pada suatu wilayah kapanewon/kemantren. Hasil korelasi menjadi dasar pemilihan
+                    variabel untuk analisis regresi dalam prediksi tingkat kerawanan. Dari 10 variabel, terdapat enam
+                    (6) variabel yang signifikan berdasarkan uji statistik t. Keenam variabel itu adalah persentase
+                    remaja laki-laki, persentase penduduk dengan tingkat pendidikan dasar, persentase penduduk dengan
+                    tingkat pendidikan tinggi, jarak kapanewon/kemantren dengan pusat kabupaten/kota, jarak
+                    kapanewon/kemantren dengan pusat provinsi, dan luas wilayah.
+                </p>
+            </div>
+            <div class="border border-gray-700 bg-gray-900 rounded-md p-4 flex flex-col gap-4">
+                <div class="text-xl font-semibold">6. Fitur pada Webmap</div>
+                <p>lain-lain...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualisasi Peta -->
+    <section class="flex flex-col gap-8 p-8 px-16 text-center items-center">
+        <div class="text-xl font-bold">
+            Visualisasi Peta
+        </div>
+        <div>
+            Anda dapat mengakses laman visualisasi peta hasil analisis melalui tombol di bawah atau tab Akses Peta :
+        </div>
+        <a href="/map.html"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg no-underline">
+            Akses Peta
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <section class="p-10 px-16 bg-gray-900 mt-10 text-sm flex flex-col md:flex-row justify-between">
+        <div class="flex flex-col w-full md:w-1/3 gap-2 font-medium">
+            <div class="font-semibold">Tentang Webmap :</div>
+            <div>
+                Webmap ini disusun sebagai bagian dari luaran penelitian tesis untuk memperoleh Gelar Magister pada
+                Prodi Teknik Geomatika
+            </div>
+            <div class="font-semibold mt-4">Email :</div>
+            <div>affinadyan@mail.ugm.ac.id</div>
+        </div>
+        <div class="flex flex-col gap-2 font-medium mt-8 md:mt-0">
+            <img src="/images/logo.png" alt="Logo" class="size-20">
+            <div>Department of Geodetic Engineering</div>
+            <div>Faculty of Geodetic Engineering Universitas Gadjah Mada</div>
+            <div>Jl. Grafika no.2 Bulaksumur, Yogyakarta, 55281</div>
+        </div>
+    </section>
+
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+        }
+
+        .list-data {
+            border: 0.13rem white solid;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+    </style>
+</body>
+
+</html>
